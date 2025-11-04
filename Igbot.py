@@ -1,4 +1,5 @@
-from instagrapi import Client
+from instagrapi 
+import Client
 import os
 import time
 
@@ -7,7 +8,7 @@ USERNAME = os.getenv("INSTA_USERNAME")
 PASSWORD = os.getenv("INSTA_PASSWORD")
 SESSION_FILE = "insta_session.json"
 
-Instagram client initialize karo
+#Instagram client initialize karo
 cl = Client()
 
 #Pehle session load karne ki koshish karo
@@ -31,7 +32,7 @@ def send_auto_reply(target_username, message):
 TARGET_USER = os.getenv("TARGET_USERNAME")
 MESSAGE = os.getenv("AUTO_REPLY_MESSAGE", "WELCOME TO GROUP 🥰🖐🏼\nTHIS BOT OWNER IS MR_JAXX")
 
-Loop for periodic messages (5 min interval)
+#Loop for periodic messages (5 min interval)
 while True:
     send_auto_reply(TARGET_USER, MESSAGE)
     time.sleep(300)
