@@ -1,0 +1,4 @@
+instagrapi=1.19.0
+requests
+pyotp
+python-dotnev 
