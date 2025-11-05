@@ -5,7 +5,6 @@ import time
 USERNAME = os.getenv("INSTA_USERNAME")
 PASSWORD = os.getenv("INSTA_PASSWORD")
 SESSION_FILE = "insta_session.json"
-IGNORE_USERS = ["user_to_skip1", "user_to_skip2"]
 
 cl = Client()
 
@@ -16,18 +15,28 @@ else:
     cl.login(USERNAME, PASSWORD)
     cl.dump_settings(SESSION_FILE)
 
-def send_auto_reply_to_last_message():
-    threads = cl.direct_threads()
-    if not threads:
-        return
-    last_thread = threads[0]
-    last_message = last_thread.items[-1]
-    last_sender = last_message.user.username
-    if last_sender not in IGNORE_USERS:
-        user_id = cl.user_id_from_username(last_sender)
-        reply_text = f"@{last_sender} WELCOME TO GROUP 🥰🖐🏼\nTHIS BOT OWNER IS MR_JAXX"
-        cl.direct_send(reply_text, [user_id])
+REPLIES = {
+    ("hii", "hello", "hey", "hy", "hoi", "hiya", "sup", "yo"): "Hlw",
+    ("how are you", "hry", "hru", "kaise ho", "kese ho", "kya haal hai"): "I'm good 😊, how are you?",
+    ("wryd", "what are you doing", "kkrh", "kya kar rahe ho", "kya kr rahe ho", "kya kar rahe ho aaj"): "Nothing! What are you doing?",
+    ("khana khaya", "khana kha liya", "khana ho gaya", "kha liya?", "food khaya?"): "Ha ho gaya! Apka hua?",
+    ("kaha se ho", "where are you from", "kaha rehete ho", "kaha rehte ho", "tum kaha se ho"): "Mumbai se hu! Aur aap kaha se ho?",
+    ("so rahe ho", "tired", "thak gaye", "so rahe ho kya"): "Nahi abhi jag raha hu 😎, tum?",
+    ("bored", "bore ho raha hu", "udaas", "sad"): "Chill karo, sab theek hoga 😌",
+    ("miss you", "love you", "luv u", "i love you"): "Aww 😊, miss you too!"
+}
+
+def check_and_reply(thread):
+    last_msg = thread.items[-1].text.lower()
+sender_username = thread.items[-1].user.username
+    for keys, reply in REPLIES.items():
+        if any(word in last_msg for word in keys):
+            cl.direct_send(f"@{sender_username} {reply}", [thread.id])
+            print(f"Replied to {sender_username} with: {reply}")
+            break
 
 while True:
-    send_auto_reply_to_last_message()
-    time.sleep(300)
+    threads = cl.direct_threads()
+    for thread in threads:
+        check_and_reply(thread)
+    time.sleep(10)
