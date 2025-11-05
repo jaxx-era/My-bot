@@ -1,5 +1,4 @@
-from instagrapi 
-import Client
+from instagrapi import Client
 import os
 import time
 
