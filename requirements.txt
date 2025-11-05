@@ -1,4 +1,4 @@
-instagrapi==1.19.0
+instagrapi
 requests
 pyotp
 python-dotenv
