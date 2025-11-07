@@ -1,4 +1,3 @@
-instagrapi
-requests
-pyotp
 python-dotenv
+openai
+python-telegram-bot
