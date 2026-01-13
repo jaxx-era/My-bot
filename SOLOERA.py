@@ -64,14 +64,13 @@ def handle_options(message):
     if chat_id not in user_states:
         user_states[chat_id] = {"joined": check_membership(chat_id, user_id)}
 
-    if text == "BOT SCRIPT":
-        if not user_states[chat_id]["joined"]:
-        msg =____
-        bot.send_message(chat_id, "Pehele TG COMMUNITY join kare, phir try kare.")
-            delete_message_later(chat_id, msg.message_id)
-        else:
-            msg = bot.send_message(chat_id, BOT_SCRIPT_MSG)
-            delete_message_later(chat_id, msg.message_id)
+if text == "BOT SCRIPT":
+    if not user_states[chat_id]["joined"]:
+        msg = bot.send_message(chat_id, "Pehele TG COMMUNITY join kare, phir try kare.")
+        delete_message_later(chat_id, msg.message_id)
+    else:
+        msg = bot.send_message(chat_id, BOT_SCRIPT_MSG)
+        delete_message_later(chat_id, msg.message_id)
 
     elif text == "OWNER TG ID":
         msg = bot.send_message(chat_id, f"Here is your number: {OWNER_USERNAME}")
