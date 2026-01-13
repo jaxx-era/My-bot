@@ -71,17 +71,17 @@ if text == "BOT SCRIPT":
     else:
         msg = bot.send_message(chat_id, BOT_SCRIPT_MSG)
         delete_message_later(chat_id, msg.message_id)
+    
+elif text == "OWNER TG ID":
+    msg = bot.send_message(chat_id, f"Here is your number: {OWNER_USERNAME}")
+    delete_message_later(chat_id, msg.message_id)
 
-    elif text == "OWNER TG ID":
-        msg = bot.send_message(chat_id, f"Here is your number: {OWNER_USERNAME}")
-        delete_message_later(chat_id, msg.message_id)
+elif text == "YOUTUBE CH":
+    msg = bot.send_message(chat_id, f"Here is your link: {YOUTUBE_CHANNEL}")
+    delete_message_later(chat_id, msg.message_id)
 
-    elif text == "YOUTUBE CH":
-        msg = bot.send_message(chat_id, f"Here is your link: {YOUTUBE_CHANNEL}")
-        delete_message_later(chat_id, msg.message_id)
-
-    elif text == "TG COMMUNITY":
-        msg = bot.send_message(chat_id, f"Here is your link: {TG_COMMUNITY}")
-        delete_message_later(chat_id, msg.message_id)
+elif text == "TG COMMUNITY":
+    msg = bot.send_message(chat_id, f"Here is your link: {TG_COMMUNITY}")
+    delete_message_later(chat_id, msg.message_id)
 
 bot.infinity_polling()
