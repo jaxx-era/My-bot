@@ -24,7 +24,7 @@ def handle_query(call):
     if call.data == "script":
         bot.send_message(call.message.chat.id, "Ye file paid hai. Agar chahiye toh @x091mph ko 'BOT SCRIPT' bhejein.")
     elif call.data == "owner":
-        bot.send_message(call.message.chat.id, "Here is your number: @x091mph")
+        bot.send_message(call.message.chat.id, "Here is OWNER TG ID : @x091mph")
     elif call.data == "youtube":
     	bot.send_message(call.message.chat.id, "Here is your link: https://youtube.com/@soloerajaxx")
     elif call.data == "community":
