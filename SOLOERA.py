@@ -5,8 +5,7 @@ from flask import Flask, request
 import threading
 import time
 
-API_TOKEN = 
-os.getenv ("API_TOKEN")
+API_TOKEN = os.getenv("API_TOKEN")
 bot = telebot.TeleBot(API_TOKEN)
 app = Flask(__name__)
 
